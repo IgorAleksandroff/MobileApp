@@ -1,7 +1,8 @@
 ﻿namespace MobileApp.Domain
 {
     /// <summary>
-    /// Parallel Controller Algorithm. P = Kp (Proportional Gain); I = Ki (Integral Gain); D = Kd (Derivative Time).   
+    /// Parallel Controller Algorithm. P = Kp (Proportional Gain); I = Ki (Integral Gain); D = Kd (Derivative Time).  for test
+    /// 
     /// </summary>
     public class ControllerParallel : ControllerModel, ITransferFunction
     {
