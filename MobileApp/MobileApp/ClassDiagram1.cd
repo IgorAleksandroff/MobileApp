@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="MobileApp.Domain.ControllerCentumPID" Collapsed="true">
+    <Position X="3.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAIAAAAAAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\ControllerCentumPID.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MobileApp.Domain.ControllerInteractive" Collapsed="true">
+    <Position X="8.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\ControllerInteractive.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MobileApp.Domain.ControllerModel" Collapsed="true">
+    <Position X="7" Y="Auto" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAABCBAAAA=</HashCode>
+      <FileName>Domain\ControllerModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MobileApp.Domain.ControllerNoninteractive" Collapsed="true">
+    <Position X="6" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\ControllerNoninteractive.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MobileApp.Domain.ControllerParallel" Collapsed="true">
+    <Position X="1Auto" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAAEAAAAABAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Domain\ControllerParallel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MobileApp.Domain.ObjectModel" Collapsed="true">
+    <Position X="3.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACQAAAAAAAAAAAAAACQBAAAAAQABAAAAAQAAAAIAAA=</HashCode>
+      <FileName>Domain\ObjectModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MobileApp.Domain.ObjectModels" Collapsed="true">
+    <Position X="3.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\ObjectModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MobileApp.Methods.CohenCoonMetod" Collapsed="true">
+    <Position X="14.75" Y="Auto" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>Methods\CohenCoonMetod.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MobileApp.Methods.LambdaMetod" Collapsed="true">
+    <Position X="16.5" Y="Auto" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Methods\LambdaMetod.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MobileApp.Methods.MinIEMetod" Collapsed="true">
+    <Position X="14.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAEAAAAQBQAIAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Methods\MinIEMetod.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MobileApp.Methods.ZieglerNicholsMetod" Collapsed="true">
+    <Position X="16.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Methods\ZieglerNicholsMetod.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MobileApp.App" Collapsed="true">
+    <Position X="13" Y="Auto" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAgAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MobileApp.MainPage" Collapsed="true">
+    <Position X="13" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAICAAHAACAAgAAAAAAAAgAAAABgAAAAAAA=</HashCode>
+      <FileName>MainPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="MobileApp.Domain.ITransferFunction" Collapsed="true">
+    <Position X="13" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\ITransferFunction.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="MobileApp.Domain.TypeAlgorithm" Collapsed="true">
+    <Position X="13" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAAAAAAAAAQAAAAAADAAAAA=</HashCode>
+      <FileName>Domain\ControllerModel.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
