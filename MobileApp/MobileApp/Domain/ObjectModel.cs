@@ -103,43 +103,35 @@ namespace MobileApp.Domain
         /// <summary>
         /// Calculation of an output trend of the first order transfer function.
         /// </summary>
-        /// <param name="x"> Input control action (Controller output)</param>
-        /// <param name="y0"></param>
+        /// <param name="yStart">The initial state</param>
+        /// <param name="yEnd">Input control action (Controller output)</param>
         /// <returns>Process variable after the element</returns>
-        public double[] CalcTrend(double[] x, double y0 = 50)
+        public double[,] CalcTrend(double yStart = 50, double yEnd = 10)
         {
-            int len = x.Length;
-            double[] y = new double[len];
-            int delta = 2; // Time different between x[i] and x[i-1]
+            int delta = 1; // Time different between x[i] and x[i-1]
+            int delay = Convert.ToInt32(Math.Ceiling(Dt / delta));
+            int len = Convert.ToInt32(Tau1) * 3 + delay;
+            double[,] y = new double[2, len];
 
             // first element of first order = 0
             // next element calculated via a linear difference equation
-            for (int i = 2; i < len; i++)
+            // TODO add step == delta
+            for (int i = 0; i < len; i++)
             {
-                y[i] = x[i] * delta * Gp/(Tau1 + delta) + y[i-1] * Tau1 / (Tau1 + delta);
-            }
+                // input
+                y[0, i] = yEnd;
+                // output
+                if (i <= delay)
+                {
+                    y[1, i] = yStart;
+                }
+                else
+                {
+                    y[1, i] = y[0, i] * delta * Gp / (Tau1 + delta) + y[1, i-1] * Tau1 / (Tau1 + delta);
+                }
 
+            }
             return y;
         }
-        public double[] CalcTrendD(double[] x, double y0 = 50, double x0 = 1)
-        {
-            int len = x.Length;
-            double[] y = new double[len];
-            int delta = 2; // Time different between x[i] and x[i-1]
-
-            // first element of first order = 0
-            y[0] = y0;
-            x[0] = x0;
-            y[1] = y0;
-            x[1] = x0;
-            // next element calculated via a linear difference equation
-            for (int i = 2; i < len; i++)
-            {
-                y[i] = ((x[i] - x[i-1]) * delta * Gp + y[i-1] * (2 * Tau1 + delta) - y[i-2] * Tau1) / (Tau1 + delta);
-            }
-
-            return y;
-        }
-
     }
 }

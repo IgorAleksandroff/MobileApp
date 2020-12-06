@@ -41,8 +41,9 @@ namespace MobileApp
         private void btTunPI_Click(object sender, EventArgs e)
         {
             readObject();
+            calcObjectTrend();
 
-            ContrList=CalcTuninng.CalcPI(objectConrtol);
+            ContrList =CalcTuninng.CalcPI(objectConrtol);
 
             ContrObList.Clear();
             ContrObList.Add(controller);
@@ -66,6 +67,20 @@ namespace MobileApp
             controller.P = double.Parse(txP.Text);
             controller.I = double.Parse(txI.Text);
             controller.D = double.Parse(txD.Text);
+        }
+
+        private void calcObjectTrend()
+        {
+            double[,] objectTrend = objectConrtol.CalcTrend(40,60);
+
+            int lenXY = objectTrend.GetUpperBound(1) + 1;
+            double[] trendX = new double[lenXY];
+            double[] trendY = new double[lenXY];
+            for (int i = 0; i < lenXY; i++)
+            {
+                trendX[i] = objectTrend[0, i];
+                trendY[i] = objectTrend[1, i];
+            }
         }
 
         public async void OnItemTapped(object sender, ItemTappedEventArgs e)
