@@ -41,6 +41,7 @@ namespace MobileApp.Domain
     {
         public static string[] describeMethods = new string[] 
         {
+            "Manual tuning",
             "CohenCoonMethod. Fast regulator, unstable",
             "ZieglerNicholsMethod. Fast regulator, unstable",
             "LamdaMethod. Slow and robust regulator",

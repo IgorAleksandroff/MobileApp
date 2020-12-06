@@ -13,8 +13,8 @@ namespace MobileApp
 {
     public partial class MainPage : ContentPage
     {
-        public ControllerCentumPID controller = new ControllerCentumPID(5, 6, 7);
-        ObjectModels objectConrtol = new ObjectModels(0.5, 5, 60);
+        public ControllerCentumPID controller = new ControllerCentumPID(100, 20, 0);
+        ObjectModels objectConrtol = new ObjectModels(2, 5, 60);
         public List<ControllerModel> ContrList { get; set; }
         public ObservableCollection<ControllerCentumPID> ContrObList { get; set; }
 
@@ -31,14 +31,7 @@ namespace MobileApp
             tbDt.Text = objectConrtol.Dt.ToString();
             tbTau1.Text = objectConrtol.Tau1.ToString();
         }
-        private void readModel()
-        {
-            objectConrtol.Gp = double.Parse(tbGp.Text);
-            objectConrtol.Dt = double.Parse(tbDt.Text);
-            objectConrtol.Tau1 = double.Parse(tbTau1.Text);
-        }
-
-        private void btTunP_Click(object sender, EventArgs e)
+        private void btCSV_Click(object sender, EventArgs e)
         {
             // for test
             //ContrList.Add(new ControllerCentumPID { P=1, I=2,D=3 });
@@ -47,19 +40,34 @@ namespace MobileApp
 
         private void btTunPI_Click(object sender, EventArgs e)
         {
-            readModel();
+            readObject();
 
             ContrList=CalcTuninng.CalcPI(objectConrtol);
 
             ContrObList.Clear();
+            ContrObList.Add(controller);
             foreach (ControllerCentumPID CPID in ContrList) ContrObList.Add(CPID);
         }
 
-        private void btTunPID_Click(object sender, EventArgs e)
+        private void btChart_Click(object sender, EventArgs e)
         {
-            readModel();
-            
+            readPID();
+            ContrObList.Add(controller);
         }
+
+        private void readObject()
+        {
+            objectConrtol.Gp = double.Parse(tbGp.Text);
+            objectConrtol.Dt = double.Parse(tbDt.Text);
+            objectConrtol.Tau1 = double.Parse(tbTau1.Text);
+        }
+        private void readPID()
+        {
+            controller.P = double.Parse(txP.Text);
+            controller.I = double.Parse(txI.Text);
+            controller.D = double.Parse(txD.Text);
+        }
+
         public async void OnItemTapped(object sender, ItemTappedEventArgs e)
         {
             ControllerCentumPID selectedPID = e.Item as ControllerCentumPID;
