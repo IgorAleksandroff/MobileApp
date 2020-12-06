@@ -73,9 +73,8 @@ namespace MobileApp.Domain
         }
     }
 
-    class ObjectModels : ObjectModel
+    public class ObjectModels : ObjectModel
     {
-        
         /// <summary>
         /// Blank model. Gp=1, Td=0, Tau1=0, Tau2=0, Beta=0.
         /// </summary>
@@ -101,16 +100,16 @@ namespace MobileApp.Domain
         }
 
         /// <summary>
-        /// Calculation of an output trend of the first order transfer function.
+        /// Calculation of output trend of the first order transfer function.
         /// </summary>
-        /// <param name="yStart">The initial state</param>
-        /// <param name="yEnd">Input control action (Controller output)</param>
+        /// <param name="mvStart">Initial Input (Controller output)</param>
+        /// <param name="mvEnd">Changed Input control action (Controller output)</param>
         /// <returns>Process variable after the element</returns>
-        public double[,] CalcTrend(double yStart = 50, double yEnd = 10)
+        public double[,] CalcTrend(double mvStart = 5, double mvEnd = 10)
         {
             int delta = 1; // Time different between x[i] and x[i-1]
             int delay = Convert.ToInt32(Math.Ceiling(Dt / delta));
-            int len = Convert.ToInt32(Tau1) * 3 + delay;
+            int len = Convert.ToInt32(Tau1) * Convert.ToInt32(Gp) * 2 + delay;
             double[,] y = new double[2, len];
 
             // first element of first order = 0
@@ -119,11 +118,11 @@ namespace MobileApp.Domain
             for (int i = 0; i < len; i++)
             {
                 // input
-                y[0, i] = yEnd;
+                y[0, i] = mvEnd;
                 // output
                 if (i <= delay)
                 {
-                    y[1, i] = yStart;
+                    y[1, i] = mvStart * Gp;
                 }
                 else
                 {

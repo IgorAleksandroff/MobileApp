@@ -4,13 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:local="clr-namespace:MobileApp;assembly=MobileApp"
+             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
              x:Class="MobileApp.MainPage">
 
     <ScrollView >
         <StackLayout>
-            <Image Source="StepTest.jpg" Margin="3"/>
             <Grid x:Name="LayoutControl" Grid.Column="0">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="200"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
@@ -22,25 +23,41 @@
                     <ColumnDefinition />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                <Label x:Name="txBlock1" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="End">gp, %</Label>
-                <Label x:Name="txBlock2" Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="End">Dt, sec</Label>
-                <Label x:Name="txBlock3" Grid.Row="0" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="End">tau1, sec</Label>
+                
+                <chart:SfChart Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
+                    <chart:SfChart.PrimaryAxis>
+                        <chart:NumericalAxis/>
+                    </chart:SfChart.PrimaryAxis>
 
-                <Label x:Name="txBlock4" Grid.Row="3" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center"> P</Label>
-                <Label x:Name="txBlock5" Grid.Row="3" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center"> I</Label>
-                <Label x:Name="txBlock6" Grid.Row="3" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center"> D</Label>
+                    <chart:SfChart.SecondaryAxis>
+                        <chart:NumericalAxis/>
+                    </chart:SfChart.SecondaryAxis>
 
-                <Button Clicked="btCSV_Click" Grid.Row="2" Grid.Column="0" Margin="0" Text= "to CSV" FontSize="Micro"/>
-                <Button Clicked="btTunPI_Click" Grid.Row="2" Grid.Column="1" Margin="0" Text= "Tun PI" FontSize="Default"/>
-                <Button Clicked="btChart_Click" Grid.Row="2" Grid.Column="2" Margin="0" Text= "Chart" FontSize="Default"/>
+                    <chart:LineSeries ItemsSource="{Binding TrendObject}"/>
+                    <chart:LineSeries ItemsSource="{Binding TrendModel}"/>
+                    <!--chart:LineSeries ItemsSource="{Binding objectConrtol}" XBindingPath="trendX" YBindingPath="trendY"/-->
 
-                <Entry x:Name="tbGp" Grid.Row="1" Grid.Column="0" Placeholder="000.5" PlaceholderColor="Olive" HorizontalOptions="Center" VerticalOptions="Center" Keyboard="Numeric"/>
-                <Entry x:Name="tbDt" Grid.Row="1" Grid.Column="1" Placeholder="001.0" PlaceholderColor="Olive" HorizontalOptions="Center" VerticalOptions="Center" Keyboard="Numeric"/>
-                <Entry x:Name="tbTau1" Grid.Row="1" Grid.Column="2" Placeholder="005.0" PlaceholderColor="Olive" HorizontalOptions="Center" VerticalOptions="Center" Keyboard="Numeric"/>
+                </chart:SfChart>
 
-                <Entry x:Name="txP" Grid.Row="4" Grid.Column="0" Text="{Binding Source={x:Reference Name=PItunning}, Path=SelectedItem.P}" HorizontalOptions="Center" VerticalOptions="Center"></Entry>
-                <Label x:Name="txI" Grid.Row="4" Grid.Column="1" Text="{Binding Source={x:Reference Name=PItunning}, Path=SelectedItem.I}" HorizontalOptions="Center" VerticalOptions="Center"></Label>
-                <Label x:Name="txD" Grid.Row="4" Grid.Column="2" Text="{Binding Source={x:Reference Name=PItunning}, Path=SelectedItem.D}" HorizontalOptions="Center" VerticalOptions="Center"></Label>
+                <Label x:Name="txBlock1" Grid.Row="1" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="End">gp, %</Label>
+                <Label x:Name="txBlock2" Grid.Row="1" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="End">Dt, sec</Label>
+                <Label x:Name="txBlock3" Grid.Row="1" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="End">tau1, sec</Label>
+
+                <Label x:Name="txBlock4" Grid.Row="4" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center"> P</Label>
+                <Label x:Name="txBlock5" Grid.Row="4" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center"> I</Label>
+                <Label x:Name="txBlock6" Grid.Row="4" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center"> D</Label>
+
+                <Button Clicked="btCSV_Click" Grid.Row="3" Grid.Column="0" Margin="0" Text= "to CSV" FontSize="Micro"/>
+                <Button Clicked="btTunPI_Click" Grid.Row="3" Grid.Column="1" Margin="0" Text= "Tun PI" FontSize="Default"/>
+                <Button Clicked="btChart_Click" Grid.Row="3" Grid.Column="2" Margin="0" Text= "Chart" FontSize="Default"/>
+
+                <Entry x:Name="tbGp" Grid.Row="2" Grid.Column="0" Placeholder="000.5" PlaceholderColor="Olive" HorizontalOptions="Center" VerticalOptions="Center" Keyboard="Numeric"/>
+                <Entry x:Name="tbDt" Grid.Row="2" Grid.Column="1" Placeholder="001.0" PlaceholderColor="Olive" HorizontalOptions="Center" VerticalOptions="Center" Keyboard="Numeric"/>
+                <Entry x:Name="tbTau1" Grid.Row="2" Grid.Column="2" Placeholder="005.0" PlaceholderColor="Olive" HorizontalOptions="Center" VerticalOptions="Center" Keyboard="Numeric"/>
+
+                <Entry x:Name="txP" Grid.Row="5" Grid.Column="0" Text="{Binding Source={x:Reference Name=PItunning}, Path=SelectedItem.P}" HorizontalOptions="Center" VerticalOptions="Center" Placeholder="100.0" PlaceholderColor="Olive" Keyboard="Numeric"/>
+                <Entry x:Name="txI" Grid.Row="5" Grid.Column="1" Text="{Binding Source={x:Reference Name=PItunning}, Path=SelectedItem.I}" HorizontalOptions="Center" VerticalOptions="Center" Placeholder="020.0" PlaceholderColor="Olive" Keyboard="Numeric"/>
+                <Entry x:Name="txD" Grid.Row="5" Grid.Column="2" Text="{Binding Source={x:Reference Name=PItunning}, Path=SelectedItem.D}" HorizontalOptions="Center" VerticalOptions="Center" Placeholder="000.0" PlaceholderColor="Olive" Keyboard="Numeric"/>
             </Grid>
             <ListView 
                 x:Name="PItunning" 
@@ -66,6 +83,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            <Image Source="StepTest.jpg" Margin="3"/>
         </StackLayout>
     </ScrollView>
 
