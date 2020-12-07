@@ -15,12 +15,14 @@ namespace MobileApp
     public partial class MainPage : ContentPage
     {
         public ControllerCentumPID controller = new ControllerCentumPID(100, 20, 0);
-        ObjectModels objectConrtol = new ObjectModels(2, 5, 60);
+        ObjectModels objectConrtol = new ObjectModels(2, 5, 30);
         public List<ControllerModel> ContrList { get; set; }
         public ObservableCollection<ControllerCentumPID> ContrObList { get; set; }
         public ObservableCollection<ChartDataPoint> TrendObject { get; set; }
         public ObservableCollection<ChartDataPoint> TrendModel { get; set; }
-
+        public ObservableCollection<ChartDataPoint> TrendP { get; set; }
+        public ObservableCollection<ChartDataPoint> TrendI { get; set; }
+        public ObservableCollection<ChartDataPoint> TrendD { get; set; }
 
         public MainPage()
         {
@@ -29,6 +31,9 @@ namespace MobileApp
             ContrObList = new ObservableCollection<ControllerCentumPID> { controller };
             TrendObject = new ObservableCollection<ChartDataPoint>();
             TrendModel = new ObservableCollection<ChartDataPoint>();
+            TrendP = new ObservableCollection<ChartDataPoint>();
+            TrendI = new ObservableCollection<ChartDataPoint>();
+            TrendD = new ObservableCollection<ChartDataPoint>();
 
             this.BindingContext = this;
 
@@ -69,17 +74,20 @@ namespace MobileApp
         }
         private void readPID()
         {
-            controller.P = double.Parse(txP.Text);
-            controller.I = double.Parse(txI.Text);
-            controller.D = double.Parse(txD.Text);
+            controller.P = double.Parse(txP.Text ?? "100");
+            controller.I = double.Parse(txI.Text ?? "20");
+            controller.D = double.Parse(txD.Text ?? "0");
         }
         
         private void calcObjectChart()
         {
             TrendObject.Clear();
             TrendModel.Clear();
+            TrendP.Clear();
+            TrendI.Clear();
+            TrendD.Clear();
 
-            double[,] objectTrend = objectConrtol.CalcTrend();
+            double[,] objectTrend = objectConrtol.CalcTrend(10/objectConrtol.Gp, 20/objectConrtol.Gp);
 
             int lenXY = objectTrend.GetUpperBound(1) + 1;
 
@@ -90,13 +98,16 @@ namespace MobileApp
         }
         private void calcModelChart()
         {
-            double[,] modelTrend = CalcTrend.CalcTrendPID(objectConrtol, controller);
+            double[,] modelTrend = CalcTrend.CalcTrendPID(objectConrtol, controller,20,10,10/objectConrtol.Gp);
 
             int lenXY = modelTrend.GetUpperBound(1) + 1;
 
             for (int i = 0; i < lenXY; i++)
             {
                 TrendModel.Add(new ChartDataPoint(i, modelTrend[0, i]));
+                TrendP.Add(new ChartDataPoint(i, modelTrend[4, i]));
+                TrendI.Add(new ChartDataPoint(i, modelTrend[5, i]));
+                TrendD.Add(new ChartDataPoint(i, modelTrend[6, i]));
             }
         }
 

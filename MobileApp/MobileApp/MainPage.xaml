@@ -11,7 +11,7 @@
         <StackLayout>
             <Grid x:Name="LayoutControl" Grid.Column="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="200"/>
+                    <RowDefinition Height="600"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
@@ -35,6 +35,9 @@
 
                     <chart:LineSeries ItemsSource="{Binding TrendObject}"/>
                     <chart:LineSeries ItemsSource="{Binding TrendModel}"/>
+                    <chart:LineSeries ItemsSource="{Binding TrendP}"/>
+                    <chart:LineSeries ItemsSource="{Binding TrendI}"/>
+                    <chart:LineSeries ItemsSource="{Binding TrendD}"/>
                     <!--chart:LineSeries ItemsSource="{Binding objectConrtol}" XBindingPath="trendX" YBindingPath="trendY"/-->
 
                 </chart:SfChart>
