@@ -11,7 +11,7 @@
         <StackLayout>
             <Grid x:Name="LayoutControl" Grid.Column="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="600"/>
+                    <RowDefinition Height="400"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
@@ -50,7 +50,7 @@
                 <Label x:Name="txBlock5" Grid.Row="4" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center"> I</Label>
                 <Label x:Name="txBlock6" Grid.Row="4" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center"> D</Label>
 
-                <Button Clicked="btCSV_Click" Grid.Row="3" Grid.Column="0" Margin="0" Text= "to CSV" FontSize="Micro"/>
+                <Button Clicked="btCSV_Click" Grid.Row="3" Grid.Column="0" Margin="0" Text= "to CSV" FontSize="Default"/>
                 <Button Clicked="btTunPI_Click" Grid.Row="3" Grid.Column="1" Margin="0" Text= "Tun PI" FontSize="Default"/>
                 <Button Clicked="btChart_Click" Grid.Row="3" Grid.Column="2" Margin="0" Text= "Chart" FontSize="Default"/>
 

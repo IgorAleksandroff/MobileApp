@@ -18,6 +18,7 @@ namespace MobileApp
         ObjectModels objectConrtol = new ObjectModels(2, 5, 30);
         public List<ControllerModel> ContrList { get; set; }
         public ObservableCollection<ControllerCentumPID> ContrObList { get; set; }
+        public double[,] modelTrend;
         public ObservableCollection<ChartDataPoint> TrendObject { get; set; }
         public ObservableCollection<ChartDataPoint> TrendModel { get; set; }
         public ObservableCollection<ChartDataPoint> TrendP { get; set; }
@@ -43,9 +44,7 @@ namespace MobileApp
         }
         private void btCSV_Click(object sender, EventArgs e)
         {
-            // for test
-            //ContrList.Add(new ControllerCentumPID { P=1, I=2,D=3 });
-            ContrObList[0].P += 7;
+            FileManager.WriteToCSV(modelTrend);
         }
 
         private void btTunPI_Click(object sender, EventArgs e)
@@ -98,7 +97,7 @@ namespace MobileApp
         }
         private void calcModelChart()
         {
-            double[,] modelTrend = CalcTrend.CalcTrendPID(objectConrtol, controller,20,10,10/objectConrtol.Gp);
+            modelTrend = CalcTrend.CalcTrendPID(objectConrtol, controller,20,10,10/objectConrtol.Gp);
 
             int lenXY = modelTrend.GetUpperBound(1) + 1;
 
