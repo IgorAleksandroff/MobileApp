@@ -11,7 +11,7 @@
         <StackLayout>
             <Grid x:Name="LayoutControl" Grid.Column="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="400"/>
+                    <RowDefinition Height="600"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
