@@ -42,12 +42,12 @@ namespace MobileApp.Domain
         public static string[] describeMethods = new string[] 
         {
             "Manual tuning",
-            "CohenCoonMethod. Fast regulator, unstable",
-            "ZieglerNicholsMethod. Fast regulator, unstable",
+            "CohenCoonMethod. Fast regulator, unstable. Used tau<2*dT (F,L)",
+            "ZieglerNicholsMethod. Fast regulator, unstable. Used where tau>2*dT (P,T)",
             "LamdaMethod. Slow and robust regulator",
-            "ISE. Minimizing the Integral of the error squared",
-            "IAE. Minimizing the Absolute error",
-            "ITAE. Minimizing the Absolute error multiplied by time"
+            "ISE. Minimizing the Integral of the error squared. For optimizing disturbance response",
+            "IAE. Minimizing the Absolute error. For optimizing disturbance response",
+            "ITAE. Minimizing the Absolute error multiplied by time. For optimizing disturbance response
         };
         //public static string[] DescribeMethods { get { return describeMethods; } }
         

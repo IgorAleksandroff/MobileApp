@@ -23,7 +23,7 @@ namespace MobileApp.Methods
         public ControllerInteractive TuningP(ObjectModel oM)
         {
             // Calculating Controller Gain (Kc)
-            P = oM.Tau1 / (oM.Gp * oM.Dt);
+            P = oM.Tau1 / (oM.Gp * oM.Dt*2); //divide P by two to reduce overshoot
 
             return new ControllerInteractive(P);
         }
@@ -36,7 +36,7 @@ namespace MobileApp.Methods
         public IControllerModel TuningPI(ObjectModel oM)
         {
             // Calculating Controller Gain (Kc)
-            P = 0.9 * oM.Tau1 / (oM.Gp * oM.Dt);
+            P = 0.9 * oM.Tau1 / (oM.Gp * oM.Dt*2); //divide P by two to reduce overshoot
             // Calculating Integral Time (Ti)
             I = 3.33 * oM.Dt;
 
@@ -52,7 +52,7 @@ namespace MobileApp.Methods
         public ControllerInteractive TuningPID(ObjectModel oM)
         {
             // Calculating Controller Gain (Kc)
-            P = 1.2 * oM.Tau1 / (oM.Gp * oM.Dt);
+            P = 1.2 * oM.Tau1 / (oM.Gp * oM.Dt*2); //divide P by two to reduce overshoot
             // Calculating Integral Time (Ti)
             I = 2 * oM.Dt;
             // Calculating Derivative Time (Td)
