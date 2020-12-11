@@ -58,6 +58,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microcharts">
+      <Version>0.7.1</Version>
+    </PackageReference>
+    <PackageReference Include="Microcharts.Forms">
+      <Version>0.7.1</Version>
+    </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfChart">
       <Version>16.4.0.54</Version>
     </PackageReference>

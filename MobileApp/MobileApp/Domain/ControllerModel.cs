@@ -47,7 +47,7 @@ namespace MobileApp.Domain
             "LamdaMethod. Slow and robust regulator",
             "ISE. Minimizing the Integral of the error squared. For optimizing disturbance response",
             "IAE. Minimizing the Absolute error. For optimizing disturbance response",
-            "ITAE. Minimizing the Absolute error multiplied by time. For optimizing disturbance response
+            "ITAE. Minimizing the Absolute error multiplied by time. For optimizing disturbance response"
         };
         //public static string[] DescribeMethods { get { return describeMethods; } }
         

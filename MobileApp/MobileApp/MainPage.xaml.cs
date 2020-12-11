@@ -9,6 +9,8 @@ using MobileApp.Methods;
 using MobileApp.Services;
 using System.Collections.ObjectModel;
 using Syncfusion.SfChart.XForms;
+using SkiaSharp;
+using Microcharts;
 
 namespace MobileApp
 {
@@ -25,6 +27,28 @@ namespace MobileApp
         public ObservableCollection<ChartDataPoint> TrendI { get; set; }
         public ObservableCollection<ChartDataPoint> TrendD { get; set; }
 
+        ObservableCollection<Microcharts.Entry> entries = new ObservableCollection<Microcharts.Entry>
+        {
+            new Microcharts.Entry(200)
+            {
+                Color = SKColor.Parse("#FF1493"),
+                Label = "J",
+                ValueLabel = "201"
+            },
+            new Microcharts.Entry(400)
+            {
+                Color = SKColor.Parse("#00BFFF"),
+                Label = "J",
+                ValueLabel = "401"
+            },
+            new Microcharts.Entry(-100)
+            {
+                Color = SKColor.Parse("#00CED1"),
+                Label = "J",
+                ValueLabel = "-101"
+            }
+        };
+
         public MainPage()
         {
             InitializeComponent();
@@ -35,6 +59,9 @@ namespace MobileApp
             TrendP = new ObservableCollection<ChartDataPoint>();
             TrendI = new ObservableCollection<ChartDataPoint>();
             TrendD = new ObservableCollection<ChartDataPoint>();
+
+            Chart01.Chart = new LineChart {Entries = entries };
+
 
             this.BindingContext = this;
 
