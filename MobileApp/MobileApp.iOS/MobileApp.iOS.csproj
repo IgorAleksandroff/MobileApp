@@ -149,7 +149,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microcharts.Forms">
-      <Version>0.9.5.9</Version>
+      <Version>0.9.5.8</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfChart">
       <Version>16.4.0.54</Version>

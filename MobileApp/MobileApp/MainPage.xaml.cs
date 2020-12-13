@@ -30,7 +30,6 @@ namespace MobileApp
         public ObservableCollection<ChartDataPoint> TrendD { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
-        //public event PropertyChangedEventHandler PropChanged;
         public ObservableCollection<ChartEntry> entries { get; set; }
         public Microcharts.Chart Chart1 { get; set; }
 
@@ -107,7 +106,7 @@ namespace MobileApp
             TrendI.Clear();
             TrendD.Clear();
 
-            entries.Clear();
+            //entries.Clear();
 
             double[,] objectTrend = objectConrtol.CalcTrend(10/objectConrtol.Gp, 20/objectConrtol.Gp);
 
@@ -116,9 +115,10 @@ namespace MobileApp
             for (int i = 0; i < lenXY; i++)
             {
                 TrendObject.Add(new ChartDataPoint(i, objectTrend[1, i]));
-                entries.Add(new Microcharts.ChartEntry(Convert.ToSingle(objectTrend[1, i])));
+                entries.Add(new ChartEntry(Convert.ToSingle(objectTrend[1, i])));
             }
-            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.Chart1)));
+
+            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Chart1)));
             //Chart01.Chart = new LineChart
             //{
             //    Entries = entries,
@@ -142,6 +142,8 @@ namespace MobileApp
                 TrendI.Add(new ChartDataPoint(i, modelTrend[5, i]));
                 TrendD.Add(new ChartDataPoint(i, modelTrend[6, i]));
             }
+
+            entries.Add(new ChartEntry(5));
         }
 
         public async void OnItemTapped(object sender, ItemTappedEventArgs e)
