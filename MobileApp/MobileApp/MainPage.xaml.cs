@@ -11,10 +11,12 @@ using System.Collections.ObjectModel;
 using Syncfusion.SfChart.XForms;
 using SkiaSharp;
 using Microcharts;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace MobileApp
 {
-    public partial class MainPage : ContentPage
+    public partial class MainPage : ContentPage, INotifyPropertyChanged
     {
         public ControllerCentumPID controller = new ControllerCentumPID(100, 20, 0);
         ObjectModels objectConrtol = new ObjectModels(2, 5, 30);
@@ -27,27 +29,10 @@ namespace MobileApp
         public ObservableCollection<ChartDataPoint> TrendI { get; set; }
         public ObservableCollection<ChartDataPoint> TrendD { get; set; }
 
-        ObservableCollection<Microcharts.Entry> entries = new ObservableCollection<Microcharts.Entry>
-        {
-            new Microcharts.Entry(200)
-            {
-                Color = SKColor.Parse("#FF1493"),
-                Label = "J",
-                ValueLabel = "201"
-            },
-            new Microcharts.Entry(400)
-            {
-                Color = SKColor.Parse("#00BFFF"),
-                Label = "J",
-                ValueLabel = "401"
-            },
-            new Microcharts.Entry(-100)
-            {
-                Color = SKColor.Parse("#00CED1"),
-                Label = "J",
-                ValueLabel = "-101"
-            }
-        };
+        public event PropertyChangedEventHandler PropertyChanged;
+        //public event PropertyChangedEventHandler PropChanged;
+        public ObservableCollection<ChartEntry> entries { get; set; }
+        public Microcharts.Chart Chart1 { get; set; }
 
         public MainPage()
         {
@@ -60,8 +45,17 @@ namespace MobileApp
             TrendI = new ObservableCollection<ChartDataPoint>();
             TrendD = new ObservableCollection<ChartDataPoint>();
 
-            Chart01.Chart = new LineChart {Entries = entries };
-
+            entries = new ObservableCollection<ChartEntry>();
+            entries.Add(new ChartEntry(10));
+            entries.Add(new ChartEntry(15));
+            Chart1 = new LineChart
+            {
+                Entries = entries,
+                LineMode = LineMode.Straight,
+                PointMode = PointMode.None,
+                LineSize = 2,
+                BackgroundColor = SKColors.Transparent,
+            };
 
             this.BindingContext = this;
 
@@ -113,6 +107,8 @@ namespace MobileApp
             TrendI.Clear();
             TrendD.Clear();
 
+            entries.Clear();
+
             double[,] objectTrend = objectConrtol.CalcTrend(10/objectConrtol.Gp, 20/objectConrtol.Gp);
 
             int lenXY = objectTrend.GetUpperBound(1) + 1;
@@ -120,7 +116,18 @@ namespace MobileApp
             for (int i = 0; i < lenXY; i++)
             {
                 TrendObject.Add(new ChartDataPoint(i, objectTrend[1, i]));
+                entries.Add(new Microcharts.ChartEntry(Convert.ToSingle(objectTrend[1, i])));
             }
+            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.Chart1)));
+            //Chart01.Chart = new LineChart
+            //{
+            //    Entries = entries,
+            //    LineMode = LineMode.Straight,
+            //    PointMode = PointMode.None,
+            //    LineSize = 8,
+            //    BackgroundColor = SKColors.Transparent,
+            //};
+
         }
         private void calcModelChart()
         {

@@ -10,7 +10,7 @@
 
     <ScrollView >
         <StackLayout>
-            <forms:ChartView x:Name="Chart01" HeightRequest="200"/>
+            <forms:ChartView HeightRequest="200" BackgroundColor="Transparent" Chart="{Binding Chart1}"/>
 
             <Grid x:Name="LayoutControl" Grid.Column="0">
                 <Grid.RowDefinitions>
